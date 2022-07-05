@@ -13,6 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>payroll</name>
     <description>payroll</description>
+    <packaging>jar</packaging>
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -45,6 +46,15 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <targetPath>${project.build.outputDirectory}</targetPath>
+                <includes>
+                    <include>application.properties</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
 
 </project>

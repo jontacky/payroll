@@ -33,7 +33,14 @@ public class EmployeeService {
 
     // update employee
     public void updateEmployee(Employee employee) {
-        Employee savedEmployee = employeeRepository.findById((employee.getId())).orElseThrow();
+        Employee savedEmployee = employeeRepository.findById((employee.getId())).orElseThrow(() -> new RuntimeException("Employee not found"));
+        if (savedEmployee != null) {
+            savedEmployee.setEmail(employee.getEmail());
+            savedEmployee.setName(employee.getName());
+            savedEmployee.setRole(employee.getRole());
+            employeeRepository.save(savedEmployee);
+        }
+
     }
 
     //get all employees
